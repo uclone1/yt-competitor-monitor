@@ -105,13 +105,26 @@ def main():
     from emailer import send_email_report
     email_sent = send_email_report(analysis_results)
 
+    # Step 5: Send Telegram Alert
+    logger.info("-" * 40)
+    logger.info("[STEP 4] Sending Telegram alert...")
+    logger.info("-" * 40)
+
+    from telegram_notifier import send_telegram_alert
+    telegram_sent = send_telegram_alert(analysis_results)
+
     # Done
     elapsed = (datetime.now() - start_time).total_seconds()
     logger.info("=" * 60)
+    status_parts = []
     if email_sent:
-        logger.info(f"[DONE] Report emailed successfully! ({elapsed:.1f}s)")
+        status_parts.append("Email sent")
+    if telegram_sent:
+        status_parts.append("Telegram sent")
+    if status_parts:
+        logger.info(f"[DONE] {' + '.join(status_parts)}! ({elapsed:.1f}s)")
     else:
-        logger.warning(f"[DONE] Completed but email failed to send. ({elapsed:.1f}s)")
+        logger.warning(f"[DONE] Completed but no notifications sent. ({elapsed:.1f}s)")
     logger.info("=" * 60)
 
 

@@ -17,6 +17,10 @@ GMAIL_ADDRESS = os.getenv("GMAIL_ADDRESS", "")
 GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "")
 RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", "")
 
+# ─── Telegram Settings ──────────────────────────────────────
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
+
 # ─── ScrapingDog Endpoints ──────────────────────────────────
 SCRAPINGDOG_BASE = "https://api.scrapingdog.com/youtube"
 CHANNEL_ENDPOINT = f"{SCRAPINGDOG_BASE}/channel/"
